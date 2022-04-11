@@ -1,0 +1,159 @@
+{
+  "env": {
+    "browser": true,
+    "es2020": true,
+    "jest": true,
+    "node": true
+  },
+  "root": true,
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    }
+  },
+  "plugins": [
+    "react",
+    "jest",
+    "react-hooks",
+    "jsx-a11y",
+    "import"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended",
+    "plugin:import/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:testing-library/react"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "rules": {
+    "class-methods-use-this": "off",
+    "no-mixed-spaces-and-tabs": "off",
+    "no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "args": "after-used",
+        "ignoreRestSiblings": false
+      }
+    ],
+    "no-param-reassign": "error",
+    "camelcase": "error",
+    "no-duplicate-imports": "error",
+    "no-undef": "off",
+    "padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "return"
+      },
+      {
+        "blankLine": "always",
+        "prev": [
+          "const",
+          "let",
+          "var"
+        ],
+        "next": "*"
+      },
+      {
+        "blankLine": "any",
+        "prev": [
+          "const",
+          "let",
+          "var"
+        ],
+        "next": [
+          "const",
+          "let",
+          "var"
+        ]
+      }
+    ],
+    "react/sort-prop-types": [
+      "error",
+      {
+        "sortShapeProp": true,
+        "requiredFirst": true,
+        "noSortAlphabetically": true
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "import/order": [
+      "warn",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "react**",
+            "group": "builtin",
+            "position": "before"
+          },
+          {
+            "pattern": "redux**",
+            "group": "builtin",
+            "position": "before"
+          },
+          {
+            "pattern": ".*/**/*.scss",
+            "group": "index",
+            "position": "after"
+          }
+        ],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/*"
+      ],
+      "rules": {
+        "@typescript-eslint/no-empty-function": "off",
+        "react/react-in-jsx-scope": 0,
+        "react/jsx-uses-react": 0
+      }
+    },
+    {
+      "files": [
+        "**/*.spec.*"
+      ],
+      "rules": {
+        "jest/expect-expect": "off"
+      }
+    }
+  ]
+}
