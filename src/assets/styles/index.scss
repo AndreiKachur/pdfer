@@ -1,0 +1,61 @@
+// ***************************
+// Put here some global styles
+// ***************************
+
+@import "normalize.css";
+// @import "draft-js/dist/Draft.css";
+
+$bgColor1: var(--background-color);
+
+html {
+  font-size: 10px;
+}
+
+:root {
+  --background-color1: #1976d2;
+  --background-color0: green;
+  --background-color: var(--background-color1);
+  --toastify-color-info: #0288d1; //info-dark
+  --toastify-color-success: #388e3c; //success-dark
+  --toastify-color-error: #d32f2f; //error-dark
+}
+
+#root {
+  display: flex;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+body {
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family:
+    source-code-pro,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Courier New",
+    monospace;
+}
