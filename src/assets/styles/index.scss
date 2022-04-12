@@ -3,6 +3,7 @@
 // ***************************
 
 @import "normalize.css";
+@import 'antd/dist/antd.css';
 // @import "draft-js/dist/Draft.css";
 
 $bgColor1: var(--background-color);
@@ -36,16 +37,13 @@ body {
     BlinkMacSystemFont,
     "Segoe UI",
     Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
     "Fira Sans",
-    "Droid Sans",
     "Helvetica Neue",
     sans-serif;
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  background-color: gray;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

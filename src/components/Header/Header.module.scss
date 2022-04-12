@@ -1,0 +1,89 @@
+.header {
+  display: flex;
+  position: fixed;
+  justify-content: space-between;
+  box-sizing: border-box;
+  align-items: center;
+  width: 100%;
+  padding: 0 10rem;
+  box-shadow: -1px 2px 12px #000000c5;
+  border-radius: 0 0 1rem 1rem;
+  z-index: 102;
+  overflow: hidden;
+  background: #141414;
+}
+
+.menu {
+  display: flex;
+  justify-content: flex-end;
+  background: #141414;
+  color: #dbdbdb;
+  border: none;
+  & > * {
+    & > span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      height: 100%;
+      background: #141414;
+      color: #dbdbdb;
+      &:hover{
+        background: #dbdbdb;
+        color: #1890ff;
+      }
+    }
+  }
+}
+
+.menuItem{
+  width: 120px;
+  padding: 0 !important;
+  margin: 0;
+  &::after{
+    border-bottom: none !important;
+    color: inherit !important;
+  }
+}
+
+.rightMenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width:75%;
+}
+  
+.title {
+  margin: 0 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 3.5rem;
+  width: 150px;
+  height: 70%;
+  padding: 0.5rem;
+  color: #e0e0e0;
+}
+
+.siteLayoutContent {
+  z-index: 1;
+  min-height: 95vh;
+  padding: 24px;
+  background: #dbdbdb;
+  box-shadow: -2px 2px 10px #000000c5;
+  margin-bottom: 1rem;
+}
+
+.switch{
+  display: flex;
+  justify-content: center;
+  margin: 0 2rem;
+  background: #ad8383;
+}
+
+.switchChecked{
+  background: #1890ff;
+}
