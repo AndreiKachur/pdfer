@@ -4,9 +4,10 @@
 
 @import "normalize.css";
 @import "antd/dist/antd.css";
+
 // @import "draft-js/dist/Draft.css";
 
-$bgColor1: var(--background-color);
+$bg-color: var(--background-color);
 
 html {
   font-size: 10px;
@@ -16,9 +17,9 @@ html {
   --background-color1: #1976d2;
   --background-color0: green;
   --background-color: var(--background-color1);
-  --toastify-color-info: #0288d1; //info-dark
-  --toastify-color-success: #388e3c; //success-dark
-  --toastify-color-error: #d32f2f; //error-dark
+  --toastify-color-info: #0288d1; // info-dark
+  --toastify-color-success: #388e3c; // success-dark
+  --toastify-color-error: #d32f2f; // error-dark
 }
 
 #root {

@@ -1,79 +1,102 @@
-.container {
-  background-color: #222;
-  color: #fff;
-  width: 100%;
-  font-weight: 400;
-  font-size: 2vw;
+%flex {
   display: flex;
-  align-items: center;
   justify-content: center;
-  text-align: center;
-  text-transform: uppercase;
-  font-family: Khula, sans-serif;
+  align-items: center;
+}
+
+%flex-column {
+  @extend %flex;
+
+  flex-direction: column;
+}
+
+.container {
+  @extend %flex-column;
+
   height: 100vh;
-  box-sizing: border-box;
-  letter-spacing: 6px;
-  margin: 0;
-  line-height: 1.2;
-}
-
-span {
-  display: inline-block;
-}
-
-.box {
-  position: absolute;
-  top: 43%;
-  left: 5%;
-  height: 0.2rem;
-  width: 2rem;
-  background-color: #dadada;
-}
-
-.box2 {
-  position: absolute;
-  top: 57%;
-  right: 5%;
-  height: 0.2rem;
-  width: 2rem;
-  background-color: #dadada;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #222;
 }
 
 .logo {
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: center;
-  font-size: 15rem;
-  width: 700px;
-  padding: 2rem;
+  @extend %flex;
+
+  font-size: 17vw;
   color: #e0e0e0;
+  margin-top: 1rem;
 
   & > p {
     padding-left: 2rem;
+    margin: 0;
   }
 }
 
-.footer {
-  text-align: center;
-  padding: 2rem;
-  font-size: 0.8rem;
-  position: absolute;
-  bottom: 1rem;
-  color: #dbdbdb;
+.animated {
+  @extend %flex-column;
+
+  margin: 3rem 0;
+
+  & > div {
+    width: 100%;
+  }
+
+  & span {
+    display: inline-block;
+  }
+
+  & .letterize {
+    @extend %flex;
+
+    color: #fff;
+    font-weight: 400;
+    font-size: 2vw;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: Khula, sans-serif;
+    letter-spacing: 6px;
+    margin: 1rem 0;
+    line-height: 1.2;
+    width: 100%;
+  }
+
+  %box {
+    position: relative;
+    height: 0.2rem;
+    width: 2rem;
+    background-color: #dadada;
+  }
+
+  & .box1 {
+    @extend %box;
+
+    left: 0%;
+  }
+
+  & .box2 {
+    @extend %box;
+
+    left: 100%;
+  }
 }
 
 .btn {
-  position: absolute;
-  bottom: 23vh;
+  @extend %flex;
+
   border: none;
   border-radius: 5px;
+  margin: 5rem 0 13rem;
   text-transform: uppercase;
   box-shadow: -1px 1px 3px #fffdfd41;
-  width: 150px;
-  height: 50px;
+  width: 10vw;
+  height: 3vw;
   color: #222;
   background-color: #dbdbdb;
+}
+
+.footer {
+  position: absolute;
+  font-size: 0.8rem;
+  bottom: 2rem;
+  color: #dbdbdb;
 }

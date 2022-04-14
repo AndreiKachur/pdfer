@@ -1,7 +1,8 @@
 {
   "customSyntax": "postcss-scss",
   "extends": [
-    "stylelint-config-standard"
+    "stylelint-config-standard",
+    "stylelint-config-standard-scss"
   ],
   "ignoreFiles": [
     "public/**/*"
@@ -9,5 +10,8 @@
   "rules": {
     "selector-class-pattern": "^[a-z][a-zA-Z0-9]+$",
     "keyframes-name-pattern": "^[a-z][a-zA-Z0-9]+$"
-  }
+  },
+  "plugins": [
+    "stylelint-order"
+  ]
 }

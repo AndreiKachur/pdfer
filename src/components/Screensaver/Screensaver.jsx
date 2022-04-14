@@ -5,17 +5,20 @@ import { useRef, useEffect, useState } from 'react';
 import ReactAnime from 'react-animejs';
 import { FaFilePdf } from 'react-icons/fa';
 
+import { LETTERISE_KEYFRAMES } from './constants';
+import getKeyframes from './getKeyframes';
+
 import styles from './Screensaver.module.scss';
 
 const { Anime, stagger } = ReactAnime;
 
 const Screensaver = ({ setIsScreensaver }) => {
-  const animatedDiv = useRef();
+  const animatedLetters = useRef();
   const [letterize, setLetterize] = useState(null);
 
   useEffect(() => {
-    setLetterize(new Letterize({ targets: animatedDiv.current.children }));
-  }, [animatedDiv]);
+    setLetterize(new Letterize({ targets: animatedLetters.current.children }));
+  }, [animatedLetters]);
 
   const handleStart = () => setIsScreensaver(false);
 
@@ -25,97 +28,36 @@ const Screensaver = ({ setIsScreensaver }) => {
         <FaFilePdf />
         <p className={styles.title}>Pdfer</p>
       </div>
-      {letterize && (
-        <Anime
-          initial={[
-            {
-              targets: letterize?.listAll,
-              keyframes: [
+      <article className={styles.animated}>
+        <Anime initial={getKeyframes('#box', '100%', '42%', '0%')}>
+          <div id="box" className={styles.box1} />
+        </Anime>
+        <div className={styles.letterize}>
+          {letterize && (
+            <Anime
+              initial={[
                 {
-                  scale: 0.5,
+                  targets: letterize?.listAll,
+                  keyframes: LETTERISE_KEYFRAMES,
+                  easing: 'spring',
+                  duration: stagger(100, {
+                    grid: [letterize?.list[0]?.length, letterize?.list?.length],
+                    from: 'center',
+                  }),
+                  loop: true,
                 },
-                {
-                  letterSpacing: 10,
-                },
-                {
-                  scale: 1,
-                },
-                {
-                  letterSpacing: 6,
-                },
-              ],
-              easing: 'spring',
-              duration: stagger(100, {
-                grid: [letterize?.list[0]?.length, letterize?.list?.length],
-                from: 'center',
-              }),
-              loop: true,
-            },
-          ]}
-        ></Anime>
-      )}
-      <div ref={animatedDiv}>
-        <div>pdfer & the.easiest.way.to.create.pdf</div>
-        <div>the.easiest.way.to.create.pdf & pdfer</div>
-      </div>
-      <Anime
-        initial={[
-          {
-            targets: '#box',
-            keyframes: [
-              {
-                left: '45%',
-                width: 100,
-              },
-              {
-                left: '85%',
-                width: 2,
-              },
-              {
-                left: '45%',
-                width: 100,
-              },
-              {
-                left: '10%',
-                width: 2,
-              },
-            ],
-            duration: 6700,
-            loop: true,
-          },
-        ]}
-      >
-        <div id="box" className={styles.box} />
-      </Anime>
-      <Anime
-        initial={[
-          {
-            targets: '#box2',
-            keyframes: [
-              {
-                right: '45%',
-                width: 100,
-              },
-              {
-                right: '85%',
-                width: 2,
-              },
-              {
-                right: '45%',
-                width: 100,
-              },
-              {
-                right: '10%',
-                width: 2,
-              },
-            ],
-            duration: 6700,
-            loop: true,
-          },
-        ]}
-      >
-        <div id="box2" className={styles.box2} />
-      </Anime>
+              ]}
+            />
+          )}
+          <div ref={animatedLetters}>
+            <div>pdfer & the.easiest.way.to.create.pdf</div>
+            <div>the.easiest.way.to.create.pdf & pdfer</div>
+          </div>
+        </div>
+        <Anime initial={getKeyframes('#box2', '0%', '48%', '100%')}>
+          <div id="box2" className={styles.box2} />
+        </Anime>
+      </article>
       <Button
         type="primary"
         size="large"
@@ -130,7 +72,7 @@ const Screensaver = ({ setIsScreensaver }) => {
 };
 
 Screensaver.propTypes = {
-  setIsScreensaver: PropTypes.func,
+  setIsScreensaver: PropTypes.func.isRequired,
 };
 
 export default Screensaver;
