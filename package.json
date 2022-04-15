@@ -11,8 +11,8 @@
     "lint:fix": "npm run stylelint:fix && npm run eslint:fix && npm run prettier:fix",
     "eslint": "eslint --ext .js,.jsx,.ts,.tsx src/ --color",
     "eslint:fix": "eslint --ext .js,.jsx,.ts,.tsx src/ --color --fix",
-    "stylelint": "stylelint src/**/*.scss",
-    "stylelint:fix": "stylelint src/**/*.scss --fix",
+    "stylelint": "stylelint src/**/*{.scss,.css}",
+    "stylelint:fix": "stylelint src/**/*{.scss,.css} --fix",
     "precommit": "lint-staged",
     "prettier:check": "prettier --check src/**/*.{js,jsx,json,ts,tsx}",
     "prettier:fix": "prettier --write src/**/*.{js,jsx,json,ts,tsx}",
@@ -56,10 +56,13 @@
     "husky": "^7.0.4",
     "node-sass": "^6.0.1",
     "prettier": "^2.5.0",
-    "stylelint": "^14.1.0",
+    "stylelint": "^14.7.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard": "^24.0.0",
     "stylelint-config-standard-scss": "^2.0.1",
-    "stylelint-order": "^5.0.0"
+    "stylelint-order": "^5.0.0",
+    "stylelint-prettier": "^2.0.0"
   },
   "eslintConfig": {
     "extends": [
@@ -102,7 +105,7 @@
       "eslint --fix",
       "prettier --write"
     ],
-    "src/**/*.scss": [
+    "src/**/*.(css|scss)": [
       "stylelint --fix"
     ]
   }

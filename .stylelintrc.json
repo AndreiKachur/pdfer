@@ -4,14 +4,48 @@
     "stylelint-config-standard",
     "stylelint-config-standard-scss"
   ],
+  "plugins": [
+    "stylelint-order",
+    "stylelint-scss"
+  ],
   "ignoreFiles": [
     "public/**/*"
   ],
   "rules": {
     "selector-class-pattern": "^[a-z][a-zA-Z0-9]+$",
-    "keyframes-name-pattern": "^[a-z][a-zA-Z0-9]+$"
-  },
-  "plugins": [
-    "stylelint-order"
-  ]
+    "keyframes-name-pattern": "^[a-z][a-zA-Z0-9]+$",
+    "order/properties-order": [
+      [
+        "position",
+        "z-index",
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "display",
+        "flex-direction",
+        "flex-wrap",
+        "justify-content",
+        "align-items",
+        "height",
+        "max-height",
+        "min-height",
+        "width",
+        "max-width",
+        "min-width",
+        "color",
+        "background",
+        "background-color",
+        "padding",
+        "margin",
+        "font",
+        "font-family",
+        "font-size",
+        "font-weight"
+      ],
+      {
+        "unspecified": "bottom"
+      }
+    ]
+  }
 }
