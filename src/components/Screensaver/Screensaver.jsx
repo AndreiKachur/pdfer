@@ -64,7 +64,7 @@ const Screensaver = ({ setIsScreensaver }) => {
         className={styles.btn}
         onClick={handleStart}
       >
-        Start
+        New Project
       </Button>
       <footer className={styles.footer}>©2022 Created by Andrey Kachur</footer>
     </section>

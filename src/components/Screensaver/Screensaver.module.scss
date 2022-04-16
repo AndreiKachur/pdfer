@@ -10,21 +10,26 @@
   flex-direction: column;
 }
 
+%khula-font {
+  font-family: Khula, sans-serif;
+  letter-spacing: 6px;
+}
+
 .container {
   @extend %flex-column;
 
   height: 100vh;
   width: 100vw;
+  background-color: var(--bg);
   overflow: hidden;
-  background-color: #222;
 }
 
 .logo {
   @extend %flex;
 
-  font-size: 17vw;
-  color: #e0e0e0;
+  color: var(--light);
   margin-top: 1rem;
+  font-size: 17vw;
 
   & > p {
     padding-left: 2rem;
@@ -47,24 +52,23 @@
 
   & .letterize {
     @extend %flex;
+    @extend %khula-font;
 
-    color: #fff;
-    font-weight: 400;
+    width: 100%;
+    color: var(--light);
+    margin: 1rem 0;
     font-size: 2vw;
+    font-weight: 400;
     text-align: center;
     text-transform: uppercase;
-    font-family: Khula, sans-serif;
-    letter-spacing: 6px;
-    margin: 1rem 0;
     line-height: 1.2;
-    width: 100%;
   }
 
   %box {
     position: relative;
     height: 0.2rem;
     width: 2rem;
-    background-color: #dadada;
+    background-color: var(--light);
   }
 
   & .box1 {
@@ -83,20 +87,21 @@
 .btn {
   @extend %flex;
 
+  color: var(--bg);
+  background-color: var(--light);
+  padding: 1rem 2rem;
+  margin: 5rem 3rem 13rem;
   border: none;
   border-radius: 5px;
-  margin: 5rem 0 13rem;
   text-transform: uppercase;
   box-shadow: -1px 1px 3px #fffdfd41;
-  width: 10vw;
-  height: 3vw;
-  color: #222;
-  background-color: #dbdbdb;
 }
 
 .footer {
+  @extend %khula-font;
+
   position: absolute;
-  font-size: 0.8rem;
   bottom: 2rem;
-  color: #dbdbdb;
+  color: var(--light);
+  font-size: 0.8rem;
 }

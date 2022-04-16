@@ -12,7 +12,7 @@ import styles from './Main.module.scss';
 const { Content, Footer } = Layout;
 
 const Main = () => {
-  // const [editorState, setEditorState] = useState(EditorState?.createEmpty());
+  const [editorState, setEditorState] = useState(EditorState?.createEmpty());
   const [isToolbarHidden, setIsToolbarHidden] = useState(false);
   const [toolbarCache, setToolbarCache] = useState(null);
   const [isSavePdf, setIsSavePdf] = useState(false);
@@ -27,6 +27,7 @@ const Main = () => {
       size: 80mm 50mm;
     }
   `;
+
   const handlePrint = useReactToPrint({
     content: () => refEditor.current,
     // pageStyle: pageStyle
@@ -51,11 +52,13 @@ const Main = () => {
     setIsSavePdf(false);
   }, [isSavePdf, handlePrint, toolbarCache]);
 
-  // const handleEditorState = (state) => setEditorState(state);
+  const handleEditorState = (state) => setEditorState(state);
+
+  const headerProps = { savePdf, hideToolbar };
 
   return (
     <Layout className={styles.layout}>
-      <Header savePdf={savePdf} hideToolbar={hideToolbar} />
+      <Header {...headerProps} />
       <Content className={styles.content}>
         <section className={styles.page}>
           <Editor
@@ -64,8 +67,8 @@ const Main = () => {
             toolbarClassName={styles.toolbar}
             editorClassName={styles.editor}
             ref={refEditor}
-            // editorState={editorState}
-            // onEditorStateChange={handleEditorState}
+            editorState={editorState}
+            onEditorStateChange={handleEditorState}
             toolbar={{
               inline: { inDropdown: true },
               list: { inDropdown: true },

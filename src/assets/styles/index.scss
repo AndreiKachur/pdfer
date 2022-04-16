@@ -4,22 +4,31 @@
 
 @import "normalize.css";
 @import "antd/dist/antd.css";
-
-// @import "draft-js/dist/Draft.css";
-
-$bg-color: var(--background-color);
-
-html {
-  font-size: 10px;
-}
+@import "react-toastify/dist/ReactToastify.css";
 
 :root {
-  --background-color1: #1976d2;
-  --background-color0: green;
-  --background-color: var(--background-color1);
-  --toastify-color-info: #0288d1; // info-dark
-  --toastify-color-success: #388e3c; // success-dark
-  --toastify-color-error: #d32f2f; // error-dark
+  font-size: 10px;
+
+  // dark-theme
+  --dark-bg: #1f1f1f;
+  --dark-primary: #0c83d3;
+  --dark-secondary: #8395a7;
+  --dark-light: #e6e2e2;
+
+  // light-theme
+  --light-bg: #576574;
+  --light-primary: #2187ee;
+  --light-secondary: #b8cfe7;
+  --light-light: #f4f4f4;
+
+  // common colors
+  --black: #0e0e0e;
+
+  // vars
+  --bg: var(--dark-bg);
+  --primary: var(--dark-primary);
+  --secondary: var(--dark-secondary);
+  --light: var(--dark-light);
 }
 
 #root {
@@ -33,6 +42,10 @@ html {
 }
 
 body {
+  min-height: 100vh;
+  background-color: #888;
+  padding: 0;
+  margin: 0;
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -41,10 +54,6 @@ body {
     "Fira Sans",
     "Helvetica Neue",
     sans-serif;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  background-color: #888;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

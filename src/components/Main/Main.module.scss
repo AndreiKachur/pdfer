@@ -5,24 +5,24 @@
 }
 
 .layout {
-  background-color: #888;
+  background-color: var(--secondary);
 }
 
 .page {
   z-index: 1;
   min-height: 1130px;
   width: 790px;
-  background: #dbdbdb;
-  box-shadow: -2px 2px 10px #000000c5;
+  background: var(--light);
+  box-shadow: -2px 2px 10px var(--black);
 }
 
 .footer {
-  text-align: center;
-  font-size: 1.4rem;
-  background-color: #888;
-  color: #dbdbdb;
-  text-shadow: -1px 1px 3px #000000c5;
+  color: var(--light);
+  background-color: var(--secondary);
   padding: 4rem 5rem 3rem;
+  font-size: 1.4rem;
+  text-align: center;
+  text-shadow: -1px 1px 3px var(--black);
 }
 
 .editorWrapper {
@@ -31,16 +31,16 @@
 
 .toolbar {
   position: fixed;
-  justify-content: center;
-  width: 100%;
-  padding: 2.4rem 0 0.8rem;
   z-index: 101;
   top: 53px;
   left: 0;
+  justify-content: center;
+  width: 100%;
+  background-color: var(--primary);
+  padding: 2.4rem 0 0.8rem;
   border-radius: 0 0 1rem 1rem;
-  box-shadow: -1px 2px 12px #000000c5;
+  box-shadow: -1px 2px 12px var(--black);
   border: none;
-  background-color: #3590e6;
 
   & div {
     box-sizing: content-box;
@@ -48,16 +48,12 @@
 }
 
 .editor {
+  padding: 5rem 3rem;
   font-family: Verdana, sans-serif;
   font-size: 24px;
-  padding: 5rem 3rem;
   overflow: clip;
 
   & div {
     margin: 0 0.5rem;
-  }
-
-  & span {
-    width: 690px;
   }
 }

@@ -1,48 +1,51 @@
 .header {
-  display: flex;
   position: fixed;
+  z-index: 102;
+  display: flex;
   justify-content: space-between;
-  box-sizing: border-box;
   align-items: center;
   width: 100%;
-  padding: 0 10rem;
-  box-shadow: -1px 2px 12px #000000c5;
+  background: var(--bg);
+  padding: 0 14rem 0 4.5rem;
+  box-sizing: border-box;
+  box-shadow: -1px 2px 12px var(--black);
   border-radius: 0 0 1rem 1rem;
-  z-index: 102;
   overflow: hidden;
-  background: #141414;
 }
 
 .menu {
   display: flex;
   justify-content: flex-end;
-  background: #141414;
-  color: #dbdbdb;
+  color: var(--light);
+  background: var(--bg);
   border: none;
+
   & > * {
     & > span {
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 2rem;
       height: 100%;
-      background: #141414;
-      color: #dbdbdb;
-      &:hover{
-        background: #dbdbdb;
-        color: #1890ff;
+      color: var(--light);
+      background: var(--bg);
+      font-size: 2rem;
+
+      &:hover {
+        color: var(--primary);
+        background: var(--light);
       }
     }
   }
 }
 
-.menuItem{
+.menuItem {
   width: 120px;
   padding: 0 !important;
   margin: 0;
-  &::after{
-    border-bottom: none !important;
+
+  &::after {
     color: inherit !important;
+    border-bottom: none !important;
   }
 }
 
@@ -51,9 +54,9 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  width:75%;
+  width: 380px;
 }
-  
+
 .title {
   margin: 0 1rem;
 }
@@ -61,29 +64,26 @@
 .logo {
   display: flex;
   align-items: center;
-  font-size: 3.5rem;
-  width: 150px;
   height: 70%;
+  width: 150px;
+  color: var(--light);
   padding: 0.5rem;
-  color: #e0e0e0;
+  font-size: 3.5rem;
 }
 
-.siteLayoutContent {
-  z-index: 1;
-  min-height: 95vh;
-  padding: 24px;
-  background: #dbdbdb;
-  box-shadow: -2px 2px 10px #000000c5;
-  margin-bottom: 1rem;
-}
-
-.switch{
+.switch {
+  position: absolute;
+  right: 4.5rem;
   display: flex;
   justify-content: center;
+  background: var(--success);
   margin: 0 2rem;
-  background: #ad8383;
+
+  &:focus {
+    box-shadow: 0 0 0 1px var(--light);
+  }
 }
 
-.switchChecked{
-  background: #1890ff;
+.switchChecked {
+  background: var(--primary);
 }
