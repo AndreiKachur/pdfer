@@ -9,11 +9,14 @@ import Header from '../Header/Header';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import styles from './Main.module.scss';
 
+import classNames from 'classnames';
+
 const { Content, Footer } = Layout;
 
 const Main = () => {
   const [editorState, setEditorState] = useState(EditorState?.createEmpty());
-  const [isToolbarHidden, setIsToolbarHidden] = useState(false);
+  const [isToolbarHidden, setIsToolbarHidden] = useState(true);
+  const [isNotDisplayed, setIsNotDisplayed] = useState(true);
   const [toolbarCache, setToolbarCache] = useState(null);
   const [isSavePdf, setIsSavePdf] = useState(false);
   const refEditor = useRef();
@@ -32,6 +35,15 @@ const Main = () => {
     content: () => refEditor.current,
     // pageStyle: pageStyle
   });
+
+  useEffect(
+    () =>
+      setTimeout(() => {
+        setIsNotDisplayed(false);
+        setIsToolbarHidden(false);
+      }, 500),
+    []
+  );
 
   useEffect(() => refEditor.current?.focusEditor(), [refEditor]);
 
@@ -62,9 +74,13 @@ const Main = () => {
       <Content className={styles.content}>
         <section className={styles.page}>
           <Editor
-            toolbarHidden={isToolbarHidden}
+            toolbarHidden={isNotDisplayed}
             wrapperClassName="demo-wrapper"
-            toolbarClassName={styles.toolbar}
+            toolbarClassName={classNames({
+              [styles.toolbar]: true,
+              [styles.toolbarOpen]: !isToolbarHidden,
+              [styles.toolbarHidden]: isToolbarHidden,
+            })}
             editorClassName={styles.editor}
             ref={refEditor}
             editorState={editorState}

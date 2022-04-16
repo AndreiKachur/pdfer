@@ -6,6 +6,7 @@
 
 .layout {
   background-color: var(--secondary);
+  transition: all 0.5s ease-in-out;
 }
 
 .page {
@@ -32,7 +33,6 @@
 .toolbar {
   position: fixed;
   z-index: 101;
-  top: 53px;
   left: 0;
   justify-content: center;
   width: 100%;
@@ -41,10 +41,19 @@
   border-radius: 0 0 1rem 1rem;
   box-shadow: -1px 2px 12px var(--black);
   border: none;
+  transition: all 0.9s ease-in-out;
 
   & div {
     box-sizing: content-box;
   }
+}
+
+.toolbarHidden {
+  top: -10px;
+}
+
+.toolbarOpen {
+  top: 53px;
 }
 
 .editor {

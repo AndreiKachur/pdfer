@@ -11,6 +11,15 @@
   box-shadow: -1px 2px 12px var(--black);
   border-radius: 0 0 1rem 1rem;
   overflow: hidden;
+  transition: top 0.6s, background 0.4s ease-in-out;
+}
+
+.headerHidden {
+  top: -70px;
+}
+
+.headerOpen {
+  top: 0;
 }
 
 .menu {
@@ -29,10 +38,12 @@
       color: var(--light);
       background: var(--bg);
       font-size: 2rem;
+      transition: all 0.4s ease-in-out;
 
       &:hover {
         color: var(--primary);
         background: var(--light);
+        transition: all 0.4s ease-in-out;
       }
     }
   }
@@ -76,7 +87,7 @@
   right: 4.5rem;
   display: flex;
   justify-content: center;
-  background: var(--success);
+  background: var(--dark-bg);
   margin: 0 2rem;
 
   &:focus {

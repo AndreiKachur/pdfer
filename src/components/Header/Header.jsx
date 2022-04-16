@@ -12,11 +12,14 @@ const { Header: HeaderAntD } = Layout;
 
 const Header = ({ savePdf, hideToolbar }) => {
   const [isChecked, setIsChecked] = useState(true);
+  const [isHeaderHidden, setIsHeaderHidden] = useState(true);
   const [theme, setTheme] = useState('dark');
   const makeChecked = () => setIsChecked(!isChecked);
 
   const handleTheme = () =>
     theme === 'dark' ? setTheme('light') : setTheme('dark');
+
+  useEffect(() => setIsHeaderHidden(false), []);
 
   useEffect(() => {
     const { style } = document.body;
@@ -28,7 +31,13 @@ const Header = ({ savePdf, hideToolbar }) => {
   }, [theme]);
 
   return (
-    <HeaderAntD className={styles.header}>
+    <HeaderAntD
+      className={classNames({
+        [styles.header]: true,
+        [styles.headerOpen]: !isHeaderHidden,
+        [styles.headerHidden]: isHeaderHidden,
+      })}
+    >
       <div className={styles.logo}>
         <FaFilePdf />
         <p className={styles.title}>Pdfer</p>
