@@ -4,24 +4,30 @@
 
 @import "normalize.css";
 @import "antd/dist/antd.css";
+@import "react-toastify/dist/ReactToastify.css";
 
 :root {
   font-size: 10px;
 
   // dark-theme
   --dark-bg: #1f1f1f;
-  --dark-primary: #157de4;
+  --dark-primary: #2082e3;
   --dark-secondary: #8395a7;
   --dark-light: #e6e2e2;
 
   // light-theme
   --light-bg: #576574;
-  --light-primary: #2187ee;
+  --light-primary: #39a2db;
   --light-secondary: #b8cfe7;
   --light-light: #f4f4f4;
 
   // common colors
   --black: #0e0e0e;
+
+  // toast colors
+  --toastify-color-info: var(--primary); // info-dark
+  --toastify-color-success: #0e8f6e; // success-dark
+  --toastify-color-error: #d32f2f; // error-dark
 
   // vars
   --bg: var(--dark-bg);

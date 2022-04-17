@@ -1,0 +1,8 @@
+.toastConfig {
+  margin-top: 12rem;
+
+  & > div {
+    font-size: 1.6rem;
+    border-radius: 8px;
+  }
+}
