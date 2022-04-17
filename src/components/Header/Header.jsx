@@ -10,7 +10,7 @@ import styles from './Header.module.scss';
 
 const { Header: HeaderAntD } = Layout;
 
-const Header = ({ savePdf, hideToolbar }) => {
+const Header = ({ savePdf, hideToolbar, saveProject }) => {
   const [isChecked, setIsChecked] = useState(true);
   const [isHeaderHidden, setIsHeaderHidden] = useState(true);
   const [theme, setTheme] = useState('dark');
@@ -57,6 +57,14 @@ const Header = ({ savePdf, hideToolbar }) => {
             <p className={styles.title}>Toolbar</p>
           </Menu.Item>
           <Menu.Item
+            key="save"
+            onClick={saveProject}
+            className={styles.menuItem}
+          >
+            <VscSave />
+            <p className={styles.title}>Save</p>
+          </Menu.Item>
+          <Menu.Item
             key="download"
             onClick={savePdf}
             className={styles.menuItem}
@@ -82,8 +90,9 @@ const Header = ({ savePdf, hideToolbar }) => {
 };
 
 Header.propTypes = {
-  savePdf: PropTypes.func.isRequired,
   hideToolbar: PropTypes.func.isRequired,
+  savePdf: PropTypes.func.isRequired,
+  saveProject: PropTypes.func.isRequired,
 };
 
 export default Header;

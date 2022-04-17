@@ -12,7 +12,7 @@ import styles from './Screensaver.module.scss';
 
 const { Anime, stagger } = ReactAnime;
 
-const Screensaver = ({ setIsScreensaver }) => {
+const Screensaver = ({ setIsScreensaver, setIsOpenSaved }) => {
   const animatedLetters = useRef();
   const [letterize, setLetterize] = useState(null);
 
@@ -20,7 +20,10 @@ const Screensaver = ({ setIsScreensaver }) => {
     setLetterize(new Letterize({ targets: animatedLetters.current.children }));
   }, [animatedLetters]);
 
-  const handleStart = () => setIsScreensaver(false);
+  const handleStart = (isOpen = false) => {
+    isOpen && setIsOpenSaved(true);
+    setIsScreensaver(false);
+  };
 
   return (
     <section className={styles.container}>
@@ -58,14 +61,24 @@ const Screensaver = ({ setIsScreensaver }) => {
           <div id="box2" className={styles.box2} />
         </Anime>
       </article>
-      <Button
-        type="primary"
-        size="large"
-        className={styles.btn}
-        onClick={handleStart}
-      >
-        New Project
-      </Button>
+      <section className={styles.btnWrapper}>
+        <Button
+          type="primary"
+          size="large"
+          className={styles.btn}
+          onClick={handleStart}
+        >
+          New Project
+        </Button>
+        <Button
+          type="primary"
+          size="large"
+          className={styles.btn}
+          onClick={() => handleStart(true)}
+        >
+          Open Project
+        </Button>
+      </section>
       <footer className={styles.footer}>©2022 Created by Andrey Kachur</footer>
     </section>
   );
@@ -73,6 +86,7 @@ const Screensaver = ({ setIsScreensaver }) => {
 
 Screensaver.propTypes = {
   setIsScreensaver: PropTypes.func.isRequired,
+  setIsOpenSaved: PropTypes.func.isRequired,
 };
 
 export default Screensaver;

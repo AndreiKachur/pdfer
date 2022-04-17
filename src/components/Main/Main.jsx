@@ -1,19 +1,22 @@
 import { Layout } from 'antd';
-import { EditorState } from 'draft-js';
+import classNames from 'classnames';
+import { EditorState, convertFromRaw, convertToRaw } from 'draft-js';
+import PropTypes from 'prop-types';
 import { useState, useRef, useEffect } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
 import { useReactToPrint } from 'react-to-print';
+import { toast } from 'react-toastify';
 
 import Header from '../Header/Header';
+
+import { TOOLBAR_OPTIONS, PAGE_STYLE, MESSAGE } from './constants';
 
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import styles from './Main.module.scss';
 
-import classNames from 'classnames';
-
 const { Content, Footer } = Layout;
 
-const Main = () => {
+const Main = ({ isOpenSaved }) => {
   const [editorState, setEditorState] = useState(EditorState?.createEmpty());
   const [isToolbarHidden, setIsToolbarHidden] = useState(true);
   const [isNotDisplayed, setIsNotDisplayed] = useState(true);
@@ -21,29 +24,37 @@ const Main = () => {
   const [isSavePdf, setIsSavePdf] = useState(false);
   const refEditor = useRef();
 
-  const pageStyle = `
-    @media print {
-      @page { size: landscape; }
-    }
+  const saveProject = () => {
+    const jsonState = JSON.stringify(
+      convertToRaw(editorState.getCurrentContent())
+    );
 
-    @page {
-      size: 80mm 50mm;
-    }
-  `;
+    localStorage.setItem('editorState', jsonState);
+    toast.success(MESSAGE.SAVED);
+  };
 
   const handlePrint = useReactToPrint({
     content: () => refEditor.current,
-    // pageStyle: pageStyle
+    // pageStyle: PAGE_STYLE
   });
 
-  useEffect(
-    () =>
-      setTimeout(() => {
-        setIsNotDisplayed(false);
-        setIsToolbarHidden(false);
-      }, 500),
-    []
-  );
+  useEffect(() => {
+    setTimeout(() => {
+      setIsNotDisplayed(false);
+      setIsToolbarHidden(false);
+    }, 500);
+
+    if (isOpenSaved) {
+      const { editorState } = localStorage;
+
+      if (!editorState) {
+        return toast.info(MESSAGE.EMPTY);
+      }
+      const savedState = convertFromRaw(JSON.parse(editorState));
+
+      setEditorState(EditorState.createWithContent(savedState));
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => refEditor.current?.focusEditor(), [refEditor]);
 
@@ -51,14 +62,14 @@ const Main = () => {
 
   const savePdf = () => {
     setToolbarCache(isToolbarHidden);
-    setIsToolbarHidden(true);
+    setIsNotDisplayed(true);
     setIsSavePdf(true);
   };
 
   useEffect(() => {
     isSavePdf && handlePrint();
     if (toolbarCache != null) {
-      setIsToolbarHidden(toolbarCache);
+      setIsNotDisplayed(toolbarCache);
       setToolbarCache(null);
     }
     setIsSavePdf(false);
@@ -66,7 +77,13 @@ const Main = () => {
 
   const handleEditorState = (state) => setEditorState(state);
 
-  const headerProps = { savePdf, hideToolbar };
+  const headerProps = { savePdf, hideToolbar, saveProject };
+
+  const toolbarStyles = classNames({
+    [styles.toolbar]: true,
+    [styles.toolbarOpen]: !isToolbarHidden,
+    [styles.toolbarHidden]: isToolbarHidden,
+  });
 
   return (
     <Layout className={styles.layout}>
@@ -75,29 +92,22 @@ const Main = () => {
         <section className={styles.page}>
           <Editor
             toolbarHidden={isNotDisplayed}
-            wrapperClassName="demo-wrapper"
-            toolbarClassName={classNames({
-              [styles.toolbar]: true,
-              [styles.toolbarOpen]: !isToolbarHidden,
-              [styles.toolbarHidden]: isToolbarHidden,
-            })}
+            toolbarClassName={toolbarStyles}
             editorClassName={styles.editor}
             ref={refEditor}
             editorState={editorState}
             onEditorStateChange={handleEditorState}
-            toolbar={{
-              inline: { inDropdown: true },
-              list: { inDropdown: true },
-              textAlign: { inDropdown: true },
-              link: { inDropdown: true },
-              history: { inDropdown: true },
-            }}
+            toolbar={TOOLBAR_OPTIONS}
           />
         </section>
       </Content>
       <Footer className={styles.footer}>©2022 Created by Andrey Kachur</Footer>
     </Layout>
   );
+};
+
+Main.propTypes = {
+  isOpenSaved: PropTypes.bool.isRequired,
 };
 
 export default Main;

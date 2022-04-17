@@ -84,6 +84,10 @@
   }
 }
 
+.btnWrapper {
+  @extend %flex;
+}
+
 .btn {
   @extend %flex;
 
