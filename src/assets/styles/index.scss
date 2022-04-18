@@ -25,9 +25,9 @@
   --black: #0e0e0e;
 
   // toast colors
-  --toastify-color-info: var(--primary); // info-dark
-  --toastify-color-success: #0e8f6e; // success-dark
-  --toastify-color-error: #d32f2f; // error-dark
+  --toastify-color-info: #064e96;
+  --toastify-color-success: #88960e;
+  --toastify-color-error: #e34136;
 
   // vars
   --bg: var(--dark-bg);
@@ -48,7 +48,7 @@
 
 body {
   min-height: 100vh;
-  background-color: #888;
+  background-color: var(--secondary);
   padding: 0;
   margin: 0;
   font-family:
@@ -61,6 +61,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.5s ease-in-out;
 }
 
 code {

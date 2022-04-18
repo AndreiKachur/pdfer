@@ -20,7 +20,7 @@ const Screensaver = ({ setIsScreensaver, setIsOpenSaved }) => {
     setLetterize(new Letterize({ targets: animatedLetters.current.children }));
   }, [animatedLetters]);
 
-  const handleStart = (isOpen = false) => {
+  const handleStart = (e, isOpen = false) => {
     isOpen && setIsOpenSaved(true);
     setIsScreensaver(false);
   };
@@ -74,7 +74,7 @@ const Screensaver = ({ setIsScreensaver, setIsOpenSaved }) => {
           type="primary"
           size="large"
           className={styles.btn}
-          onClick={() => handleStart(true)}
+          onClick={(e) => handleStart(e, true)}
         >
           Open Project
         </Button>

@@ -1,13 +1,11 @@
-%flex {
+@mixin flex($column: false) {
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
-%flex-column {
-  @extend %flex;
-
-  flex-direction: column;
+  @if $column {
+    flex-direction: column;
+  }
 }
 
 %khula-font {
@@ -16,7 +14,7 @@
 }
 
 .container {
-  @extend %flex-column;
+  @include flex(column);
 
   height: 100vh;
   width: 100vw;
@@ -25,7 +23,7 @@
 }
 
 .logo {
-  @extend %flex;
+  @include flex;
 
   color: var(--light);
   margin-top: 1rem;
@@ -38,7 +36,7 @@
 }
 
 .animated {
-  @extend %flex-column;
+  @include flex(column);
 
   margin: 3rem 0;
 
@@ -51,7 +49,7 @@
   }
 
   & .letterize {
-    @extend %flex;
+    @include flex;
     @extend %khula-font;
 
     width: 100%;
@@ -85,11 +83,11 @@
 }
 
 .btnWrapper {
-  @extend %flex;
+  @include flex;
 }
 
 .btn {
-  @extend %flex;
+  @include flex;
 
   color: var(--bg);
   background-color: var(--light);
